@@ -13,4 +13,4 @@ require('./startup/middlewares')(app);
 require('./startup/routes')(app);
 
 const PORT = config.port;
-const server = app.listen(PORT, () => console.log(`Savy Backend listening on port ${PORT}...`));
+const server = app.listen(PORT, () => console.log(`Payrollah Backend listening on port ${PORT}...`));
