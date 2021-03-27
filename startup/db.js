@@ -2,6 +2,9 @@ const config = require('../config/keys');
 const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(config.dbEndpoint, {
     dialect: 'postgres',
+    "dialectOptions": {
+        "ssl": true
+      }
 });
 
 const db = {};
