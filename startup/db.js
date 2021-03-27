@@ -2,9 +2,11 @@ const config = require('../config/keys');
 const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(config.dbEndpoint, {
     dialect: 'postgres',
-    ssl: true,
     dialectOptions: {
-        rejectUnauthorized: false
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
     }
 });
 
