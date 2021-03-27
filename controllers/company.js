@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const Company = require('../models/Company');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require("../config/keys");
@@ -10,14 +10,14 @@ module.exports = () => {
 
     methods.create = (req, res) => {
         const userData = {
-            name: req.body.name,
+            companyId: req.body.companyId,
             email: req.body.email,
             password: req.body.password,
         };
 
         methods.findByEmail(req.body.email).then((userFound) => {
             if (!userFound) {
-                User.create(userData)
+                Company.create(userData)
                     .then(() => {
                         res.status(200).send({ success: true })
                     })
@@ -31,7 +31,7 @@ module.exports = () => {
     };
 
     methods.findByEmail = (email) => {
-        return User.findOne({
+        return Company.findOne({
             where: {
                 email: email,
             },
@@ -39,7 +39,7 @@ module.exports = () => {
     };
 
     methods.findByUuid = (uuid) => {
-        return User.findOne({
+        return Company.findOne({
             where: {
                 uuid: uuid,
             },
@@ -62,7 +62,7 @@ module.exports = () => {
                     res.status(401).send('Wrong password');
                 }
             } else {
-                res.status(400).send('User does not exist.');
+                res.status(400).send('Company does not exist.');
             }
         });
     };

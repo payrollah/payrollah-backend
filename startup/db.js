@@ -30,7 +30,7 @@ db.sequelize
         console.log('Unable to connect to the database. ' + err);
     });
 
-db.User = require('../models/User');
+db.Company = require('../models/Company');
 
 Object.keys(db).forEach((modelName) => {
     if (db[modelName].associate) {
@@ -51,8 +51,8 @@ Object.keys(db).forEach((modelName) => {
 
 const data = require('../test_data');
 db.sequelize.sync({ force: true }).then(() => {
-    db.User.bulkCreate(data.users).then((users) => {
-        console.log(users)
+    db.Company.bulkCreate(data.companies).then((company) => {
+        console.log(company)
     });
 }).then(() => {
     console.log("DB has been synced")

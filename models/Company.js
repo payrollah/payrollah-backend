@@ -2,15 +2,15 @@ const { DataTypes, Sequelize } = require('sequelize');
 const db = require('../startup/db');
 const bcrypt = require('bcryptjs');
 
-const User = db.sequelize.define(
-    'User', {
+const Company = db.sequelize.define(
+    'Company', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: Sequelize.UUIDV4
         },
-        name: {
-            type: DataTypes.STRING,
+        companyId: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         email: {
@@ -28,10 +28,10 @@ const User = db.sequelize.define(
     }, {
         underscored: true,
         freezetableName: true,
-        tableName: 'users',
+        tableName: 'companies',
         createdAt: 'created_at',
         updatedAt: 'updated_at',
     }
 );
 
-module.exports = User;
+module.exports = Company;

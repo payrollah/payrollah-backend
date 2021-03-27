@@ -2,19 +2,19 @@ const data = {};
 
 
 
-data.users = [
+data.companies = [
   {
-    name: 'One',
+    companyId: 1,
     email: 'userone@mail.com',
     password: 'password',
   },
   {
-    name: 'Two',
+    companyId: 2,
     email: 'usertwo@mail.com',
     password: 'password',
   },
   {
-    name: 'Three',
+    companyId: 3,
     email: 'userthree@mail.com',
     password: 'password',
   },

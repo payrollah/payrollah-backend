@@ -1,4 +1,4 @@
 module.exports = function(app) {
-    app.use('/api', require('../routers/rootRoutes'));
-    app.use('/api/auth', require('../routers/authRoutes.js'));
+    app.use('/', require('../routers/rootRoutes'));
+    app.use('/company', require('../routers/companyRoutes.js'));
 };
