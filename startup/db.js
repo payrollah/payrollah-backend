@@ -44,15 +44,16 @@ Object.keys(db).forEach((modelName) => {
  *
  */
 
- db.sequelize.sync({ force: false }).then(() => {
-     console.log("DB has been synced")
- })
+//  db.sequelize.sync({ force: false }).then(() => {
+//      console.log("DB has been synced")
+//  })
 
 
-// const data = require('../test_data');
-// // let tempCriteria;
-// db.sequelize.sync({ force: false }).then(() => {
-    // db.User.bulkCreate(data.users).then((users) => {
-    //     console.log(users)
-    // });
-// });
+const data = require('../test_data');
+db.sequelize.sync({ force: true }).then(() => {
+    db.User.bulkCreate(data.users).then((users) => {
+        console.log(users)
+    });
+}).then(() => {
+    console.log("DB has been synced")
+});
