@@ -31,6 +31,7 @@ db.sequelize
     });
 
 db.Company = require('../models/Company');
+db.Employee = require('../models/Employee');
 
 Object.keys(db).forEach((modelName) => {
     if (db[modelName].associate) {
@@ -44,16 +45,16 @@ Object.keys(db).forEach((modelName) => {
  *
  */
 
-//  db.sequelize.sync({ force: false }).then(() => {
-//      console.log("DB has been synced")
-//  })
+ db.sequelize.sync({ force: true }).then(() => {
+     console.log("DB has been synced")
+ })
 
 
-const data = require('../test_data');
-db.sequelize.sync({ force: true }).then(() => {
-    db.Company.bulkCreate(data.companies).then((company) => {
-        console.log(company)
-    });
-}).then(() => {
-    console.log("DB has been synced")
-});
+// const data = require('../test_data');
+// db.sequelize.sync({ force: true }).then(() => {
+//     db.Company.bulkCreate(data.companies).then((company) => {
+//         console.log(company)
+//     });
+// }).then(() => {
+//     console.log("DB has been synced")
+// });
