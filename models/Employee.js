@@ -10,7 +10,7 @@ const Employee = db.sequelize.define(
             defaultValue: Sequelize.UUIDV4
         },
         address: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         name: {
@@ -20,6 +20,7 @@ const Employee = db.sequelize.define(
         nric: {
           type: DataTypes.STRING,
           allowNull: false,
+          unique: true,
         },
         email: {
             type: DataTypes.STRING,

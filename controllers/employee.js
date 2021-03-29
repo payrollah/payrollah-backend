@@ -2,6 +2,7 @@ const Employee = require('../models/Employee');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require("../config/keys");
+const web3 = require("../services/web3Client")();
 
 let refreshTokens = [];
 
@@ -47,6 +48,14 @@ module.exports = () => {
         });
     };
 
+    methods.findByAddress = (address) => {
+        return Employee.findOne({
+            where: {
+                address: address,
+            },
+        });
+    };
+
     methods.login = (req, res) => {
         const hashedPw = req.body.password;
         methods.findByEmail(req.body.email).then((user) => {
@@ -84,6 +93,26 @@ module.exports = () => {
         refreshTokens = refreshTokens.filter(token => token !== req.body.token)
         res.sendStatus(204)
     };
+
+    methods.getEmployee = (req, res) => {
+        const companyId = req.user.companyId;
+        const employeeAddress = req.query.address;
+        web3.isEmployeeAddressOfCompany(employeeAddress, companyId).then((isEmployee) => {
+            if (isEmployee) {
+                methods.findByAddress(employeeAddress).then((employee) => {
+                    if(employee){
+                        res.json({
+                            ...employee.dataValues
+                        })
+                    }
+                });
+            } else{
+                res.status(400).send({reason:"Employee does not exist"});
+            }
+        }).catch((err)=>{
+            res.status(400).send(err);
+        });
+    }
 
     return methods
 }

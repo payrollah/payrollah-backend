@@ -55,6 +55,9 @@ Object.keys(db).forEach((modelName) => {
 //     db.Company.bulkCreate(data.companies).then((company) => {
 //         console.log(company)
 //     });
+//     db.Employee.bulkCreate(data.employees).then((employee) => {
+//         console.log(employee)
+//     });
 // }).then(() => {
 //     console.log("DB has been synced")
 // });
