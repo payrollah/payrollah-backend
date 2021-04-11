@@ -1,5 +1,5 @@
 const { providers } = require("ethers");
-const { Payrollah__factory } = require("@payrollah/payrollah-registry");
+const { Task__factory, Job__factory } = require("@payrollah/payrollah-registry");
 const config = require("../config/keys");
 
 module.exports = () => {
@@ -7,19 +7,24 @@ module.exports = () => {
 
   methods.ethersProvider = new providers.InfuraProvider(config.NETWORK, config.INFURA_API_KEY);
 
-  methods.getPayrollahContract = async () => {
-    const payrollahContract = await Payrollah__factory.connect(config.PAYROLLAH_CONTRACT_ADDRESS, methods.ethersProvider)
-    return payrollahContract;
+  methods.getTaskContract = async () => {
+    const taskContract = await Task__factory.connect(config.TASK_CONTRACT_ADDRESS, methods.ethersProvider)
+    return taskContract;
   }
 
-  methods.isEmployeeAddressOfCompany = async (employeeAddress, companyId) => {
+  methods.isTaskComplete = async (taskId) => {
     try {
-      const payrollahContract = await methods.getPayrollahContract();
-      const transaction = await payrollahContract.isEmployeeAddressOfCompany(employeeAddress, companyId);
+      const taskContract = await methods.getTaskContract();
+      const transaction = await taskContract.isCompletedTask(taskId);
       return transaction
     } catch (err){
       throw err
     }
+  }
+
+  methods.getJobContract = async (jobAddress) => {
+    const jobContract = await Job__factory.connect(jobAddress, methods.ethersProvider)
+    return jobContract;
   }
 
   return methods;

@@ -1,3 +1,5 @@
+// Employee is deprecated
+
 const Employee = require('../models/Employee');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');

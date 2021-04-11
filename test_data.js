@@ -3,17 +3,17 @@ const data = {};
 data.companies = [
   {
     companyId: 1,
-    email: 'userone@mail.com',
+    address: '0x67b5Bc373cAA527Cee654d6A0f629ba1E84fAd02',
     password: 'password',
   },
   {
     companyId: 2,
-    email: 'usertwo@mail.com',
+    address: '0x67b5Bc373cAA527Cee654d6A0f629ba1E84fAd03',
     password: 'password',
   },
   {
     companyId: 3,
-    email: 'userthree@mail.com',
+    address: '0x67b5Bc373cAA527Cee654d6A0f629ba1E84fAd04',
     password: 'password',
   },
 ];

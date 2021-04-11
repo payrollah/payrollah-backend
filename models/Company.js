@@ -13,7 +13,7 @@ const Company = db.sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        email: {
+        companyAddress: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true

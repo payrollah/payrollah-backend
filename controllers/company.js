@@ -11,11 +11,11 @@ module.exports = () => {
     methods.create = (req, res) => {
         const userData = {
             companyId: req.body.companyId,
-            email: req.body.email,
+            companyAddress: req.body.companyAddress,
             password: req.body.password,
         };
 
-        methods.findByEmail(req.body.email).then((userFound) => {
+        methods.findByCompanyAddress(req.body.companyAddress).then((userFound) => {
             if (!userFound) {
                 Company.create(userData)
                     .then(() => {
@@ -30,10 +30,10 @@ module.exports = () => {
         });
     };
 
-    methods.findByEmail = (email) => {
+    methods.findByCompanyAddress = (companyAddress) => {
         return Company.findOne({
             where: {
-                email: email,
+                companyAddress: companyAddress,
             },
         });
     };
@@ -48,7 +48,7 @@ module.exports = () => {
 
     methods.login = (req, res) => {
         const hashedPw = req.body.password;
-        methods.findByEmail(req.body.email).then((user) => {
+        methods.findByCompanyAddress(req.body.companyAddress).then((user) => {
             if (user) {
                 if (bcrypt.compareSync(hashedPw, user.dataValues.password)) {
                     const accessToken = generateAccessToken(user.dataValues)

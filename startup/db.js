@@ -31,7 +31,9 @@ db.sequelize
     });
 
 db.Company = require('../models/Company');
-db.Employee = require('../models/Employee');
+// Employee is deprecated
+// db.Employee = require('../models/Employee');
+db.Employee = require('../models/Work');
 
 Object.keys(db).forEach((modelName) => {
     if (db[modelName].associate) {

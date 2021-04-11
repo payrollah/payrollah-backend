@@ -1,3 +1,5 @@
+// Employee is deprecated
+
 const { DataTypes, Sequelize } = require('sequelize');
 const db = require('../startup/db');
 const bcrypt = require('bcryptjs');
