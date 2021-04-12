@@ -55,11 +55,7 @@ module.exports = () => {
                           const hash = task.evidence;
                           methods.findUuid(hash).then((work) => {
                             if (work) {
-                                const key = hash+"."+work.dataValues.type;
-                                upload.getImage(key).then((data)=>{
-                                  res.writeHead(200, {'Content-Type': 'image/png'});
-                                  res.end(Buffer.from(data, 'base64'));
-                                });
+                                res.json(work.dataValues)
                             } else {
                                 res.status(400).send('File not found');
                             }
