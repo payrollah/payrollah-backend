@@ -19,7 +19,7 @@ Base Url: `https://payrollah.herokuapp.com/`
 
 For company routes, access using `/company/...`
 
-1. Signup
+**Signup**
 ----
 Allow companies to sign up with their address and a password
 
@@ -46,7 +46,7 @@ Allow companies to sign up with their address and a password
   * **Code:** 200 <br />
     **Content:** `{ success: true }`
 
-1. Login
+**Login**
 ----
 Allows the company to login with a password and returns a `JWT` token
 
@@ -72,7 +72,7 @@ Allows the company to login with a password and returns a `JWT` token
   * **Code:** 200 <br />
     **Content:** `{ accessToken: "string", refreshToken: "string" }`
 
-1. logout
+**Logout**
 ---
 Ends the login session
 
@@ -100,7 +100,7 @@ Ends the login session
 
 For work routes, access using `/work/...`
 
-1. Upload Image
+**Upload Image**
 ----
 Allows user to upload a image and returns a tamper-proof hash using `keccak256`
 
@@ -127,7 +127,7 @@ Allows user to upload a image and returns a tamper-proof hash using `keccak256`
   * **Code:** 200 <br />
     **Content:** `{ uuid: "0xString", success: true }`
 
-1. Get Watermarked Image
+**Get Watermarked Image**
 ----
 Show a down sampled watermark image as a way to preview work.
 
@@ -153,7 +153,7 @@ Show a down sampled watermark image as a way to preview work.
   * **Code:** 200 <br />
     **Content:** `buffered stream`
 
-1. Get Image
+**Get Image**
 ----
 Show a final image of work for company
 
